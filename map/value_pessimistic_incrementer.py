@@ -1,10 +1,11 @@
 import hazelcast
 import os
 from time import process_time_ns
+import sys
 
 if __name__ == "__main__":
     client = hazelcast.HazelcastClient(
-    cluster_name="hazelcast-test", 
+    cluster_name=f"{sys.argv[1]}", 
     ) 
     map = client.get_map("map-increment").blocking()
     key = "conflict-pessimistic"

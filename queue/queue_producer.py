@@ -1,10 +1,11 @@
 import hazelcast
 import threading
 import os
+import sys
 
 if __name__ == "__main__":
     client = hazelcast.HazelcastClient(
-    cluster_name="hazelcast-test", 
+    cluster_name=f"{sys.argv[1]}", 
     )
     queue = client.get_queue("bounded-queue-test").blocking()
     num_consumers = 2
